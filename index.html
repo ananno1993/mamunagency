@@ -18,13 +18,22 @@
                     <span>Mamun Agency</span>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Services</a></li>
-                    <li><a href="#models">Our Models</a></li>
-                    <li><a href="#live-meet">Booking</a></li>
-                    <li><a href="#testimonials">Reviews</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home" data-lang-en="Home" data-lang-bn="হোম">Home</a></li>
+                    <li><a href="#features" data-lang-en="Services" data-lang-bn="সেবা">Services</a></li>
+                    <li><a href="#models" data-lang-en="Our Models" data-lang-bn="আমাদের মডেল">Our Models</a></li>
+                    <li><a href="#live-meet" data-lang-en="Booking" data-lang-bn="বুকিং">Booking</a></li>
+                    <li><a href="#testimonials" data-lang-en="Reviews" data-lang-bn="রিভিউ">Reviews</a></li>
+                    <li><a href="#contact" data-lang-en="Contact" data-lang-bn="যোগাযোগ">Contact</a></li>
+                    <li><a href="#" onclick="showLoginModal(); return false;" class="admin-link"><i class="fas fa-sign-in-alt"></i> <span data-lang-en="Login" data-lang-bn="লগইন">Login</span></a></li>
                 </ul>
+                <div class="nav-controls">
+                    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="languageToggle" class="language-toggle" aria-label="Change language">
+                        <span class="lang-text">বাংলা</span>
+                    </button>
+                </div>
                 <div class="hamburger">
                     <span></span>
                     <span></span>
@@ -542,6 +551,39 @@
             </div>
         </div>
     </section>
+
+    <!-- Premium Access Section (Hidden by default) -->
+    <section id="premium-access" class="premium-access" style="display: none;">
+        <div class="container">
+            <div id="premiumContent" class="premium-content">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="custom-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeLoginModal()">&times;</span>
+            <div class="modal-icon">
+                <i class="fas fa-user-circle" style="color: #6c5ce7; font-size: 60px;"></i>
+            </div>
+            <h3 id="modal-title">Customer Login</h3>
+            <p id="modal-message" style="margin-bottom: 20px;">Enter your Customer ID to access premium features</p>
+            <form id="customerLoginForm" style="max-width: 400px; margin: 0 auto;">
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <input type="text" id="customerIdInput" placeholder="Enter Customer ID" required style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 16px;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+            <p style="margin-top: 15px; font-size: 14px; color: #7f8c8d;">Don't have an account? Contact us to register.</p>
+            <p style="margin-top: 10px; font-size: 13px; color: #95a5a6;">
+                <a href="admin.html" style="color: #6c5ce7; text-decoration: none;">Admin Panel</a>
+            </p>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
