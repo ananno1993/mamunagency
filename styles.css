@@ -391,8 +391,9 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     max-width: 100%;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
+    justify-content: center;
 }
 
 .feature-card {
@@ -525,6 +526,8 @@ body {
 
 .live-meet-image img {
     width: 100%;
+    max-height: 500px;
+    object-fit: cover;
     border-radius: 15px;
     box-shadow: var(--shadow-lg);
 }
@@ -1224,6 +1227,79 @@ body {
         grid-template-columns: 1fr;
         gap: 20px;
     }
+    
+    /* Live Meet Mobile Optimization */
+    .live-meet {
+        padding: 60px 0;
+    }
+    
+    .live-meet-content {
+        gap: 30px;
+        padding: 0 15px;
+    }
+    
+    .live-meet-image {
+        margin-bottom: 20px;
+    }
+    
+    .live-meet-image img {
+        max-height: 350px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .live-meet-details h3 {
+        font-size: 28px;
+        text-align: center;
+    }
+    
+    .subtitle {
+        font-size: 16px;
+        text-align: center;
+    }
+    
+    .live-meet-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+        padding: 20px 15px;
+        background: var(--background-light);
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+    
+    .item-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+    }
+    
+    .item-content h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .item-content p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+    
+    .live-meet-cta {
+        padding: 20px 15px;
+        margin-top: 20px;
+    }
+    
+    .live-meet-cta h4 {
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .live-meet-cta p {
+        font-size: 14px;
+        line-height: 1.7;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1243,6 +1319,61 @@ body {
     .services-grid,
     .testimonials-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Live Meet Extra Mobile Optimization */
+    .live-meet {
+        padding: 40px 0;
+    }
+    
+    .live-meet-content {
+        padding: 0 10px;
+        gap: 25px;
+    }
+    
+    .live-meet-image img {
+        max-height: 280px;
+        border-radius: 12px;
+    }
+    
+    .live-meet-details h3 {
+        font-size: 24px;
+    }
+    
+    .subtitle {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .live-meet-item {
+        padding: 15px 10px;
+        margin-bottom: 15px;
+    }
+    
+    .item-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+    
+    .item-content h4 {
+        font-size: 17px;
+    }
+    
+    .item-content p {
+        font-size: 13px;
+    }
+    
+    .live-meet-cta {
+        padding: 15px 10px;
+    }
+    
+    .live-meet-cta h4 {
+        font-size: 18px;
+    }
+    
+    .live-meet-cta p {
+        font-size: 13px;
     }
 }
 
