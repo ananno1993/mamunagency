@@ -604,6 +604,7 @@ checkCustomerLogin();
 
 // Theme Toggle
 const themeToggle = document.getElementById('themeToggle');
+const floatingThemeToggle = document.getElementById('floatingThemeToggle');
 const body = document.body;
 
 // Check for saved theme preference
@@ -611,19 +612,34 @@ const currentTheme = localStorage.getItem('theme') || 'light';
 if (currentTheme === 'dark') {
     body.classList.add('dark-mode');
     themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    if (floatingThemeToggle) {
+        floatingThemeToggle.innerHTML = '<i class="fas fa-sun"></i><span class="tooltip">Toggle Theme</span>';
+    }
 }
 
-themeToggle.addEventListener('click', () => {
+// Function to toggle theme
+function toggleTheme() {
     body.classList.toggle('dark-mode');
     
     if (body.classList.contains('dark-mode')) {
         themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        if (floatingThemeToggle) {
+            floatingThemeToggle.innerHTML = '<i class="fas fa-sun"></i><span class="tooltip">Toggle Theme</span>';
+        }
         localStorage.setItem('theme', 'dark');
     } else {
         themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        if (floatingThemeToggle) {
+            floatingThemeToggle.innerHTML = '<i class="fas fa-moon"></i><span class="tooltip">Toggle Theme</span>';
+        }
         localStorage.setItem('theme', 'light');
     }
-});
+}
+
+themeToggle.addEventListener('click', toggleTheme);
+if (floatingThemeToggle) {
+    floatingThemeToggle.addEventListener('click', toggleTheme);
+}
 
 // Language Translations
 const translations = {
@@ -779,7 +795,7 @@ const translations = {
         viewOurModels: 'মডেল দেখুন',
         
         // Features
-        featuresTitle: 'আপনাদের সার্ভিস',
+        featuresTitle: 'আমাদের সার্ভিস',
         featuresSubtitle: 'আপনার পছন্দ অনুযায়ী প্রফেশনাল সার্ভিস বেছে নিন।',
         audioCall: 'অডিও কল',
         audioCallDesc: 'সিকিউর ভয়েস কলের মাধ্যমে আপনাদের পছন্দের বন্ধুদের সাথে কথা বলুন। দেখা করার আগে ভালো কথোপকথন উপভোগ করুন।',
@@ -842,7 +858,7 @@ const translations = {
         
         // Contact
         contactTitle: 'আজই আপনার এক্সপেরিয়েন্স বুক করুন',
-        contactSubtitle: 'আপনাদের সার্ভিস নিয়ে প্রশ্ন আছে, বুকিং করতে চান বা সাহায্য দরকার? আপনাদের কনসিয়ার্জ টিম ২৪/৭ এভেইলেবল।',
+        contactSubtitle: 'আমাদের সার্ভিস নিয়ে প্রশ্ন আছে, বুকিং করতে চান বা সাহায্য দরকার? আমাদের কনসিয়ার্জ টিম ২৪/৭ এভেইলেবল।',
         emailBooking: 'ইমেইল বুকিং',
         emailResponse: '২ ঘণ্টার মধ্যে রিপ্লাই',
         directLine: 'ডাইরেক্ট লাইন',
@@ -893,29 +909,56 @@ const translations = {
 
 // Language Toggle
 const languageToggle = document.getElementById('languageToggle');
-let currentLanguage = localStorage.getItem('language') || 'bn';
+const floatingLanguageToggle = document.getElementById('floatingLanguageToggle');
+
+// Check if mobile device
+const isMobile = window.innerWidth <= 768;
+
+// Set default language: Bengali on mobile, saved preference on desktop
+let currentLanguage = localStorage.getItem('language');
+if (!currentLanguage) {
+    currentLanguage = isMobile ? 'bn' : 'en';
+}
 
 // Apply saved language on page load
 if (currentLanguage === 'bn') {
-    languageToggle.querySelector('.lang-text').textContent = 'English';
+    languageToggle.querySelector('.lang-text').textContent = 'EN';
+    if (floatingLanguageToggle) {
+        floatingLanguageToggle.querySelector('.lang-text').textContent = 'EN';
+    }
     applyLanguage('bn');
 } else {
-    languageToggle.querySelector('.lang-text').textContent = 'বাংলা';
+    languageToggle.querySelector('.lang-text').textContent = 'BN';
+    if (floatingLanguageToggle) {
+        floatingLanguageToggle.querySelector('.lang-text').textContent = 'BN';
+    }
     applyLanguage('en');
 }
 
-languageToggle.addEventListener('click', () => {
+// Function to toggle language
+function toggleLanguage() {
     currentLanguage = currentLanguage === 'en' ? 'bn' : 'en';
     localStorage.setItem('language', currentLanguage);
     
     if (currentLanguage === 'bn') {
-        languageToggle.querySelector('.lang-text').textContent = 'English';
+        languageToggle.querySelector('.lang-text').textContent = 'EN';
+        if (floatingLanguageToggle) {
+            floatingLanguageToggle.querySelector('.lang-text').textContent = 'EN';
+        }
     } else {
-        languageToggle.querySelector('.lang-text').textContent = 'বাংলা';
+        languageToggle.querySelector('.lang-text').textContent = 'BN';
+        if (floatingLanguageToggle) {
+            floatingLanguageToggle.querySelector('.lang-text').textContent = 'BN';
+        }
     }
     
     applyLanguage(currentLanguage);
-});
+}
+
+languageToggle.addEventListener('click', toggleLanguage);
+if (floatingLanguageToggle) {
+    floatingLanguageToggle.addEventListener('click', toggleLanguage);
+}
 
 // Apply language to elements with data attributes
 function applyLanguage(lang) {
